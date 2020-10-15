@@ -178,7 +178,10 @@ public final class ReactionButton: UIReactionControl {
       if isLongPressMoved {
         selector.longPressAction(gestureRecognizer)
 
-        dismissReactionSelector()
+        //check if need auto dismiss
+        if config.autoDissmissOnLetGo == true {
+             dismissReactionSelector()
+        }
       }
       else {
         selector.feedback = .tapToSelectAReaction
@@ -204,7 +207,10 @@ public final class ReactionButton: UIReactionControl {
   }
 
   @objc func reactionSelectorTouchedUpOutsideAction(_ sender: ReactionSelector) {
-    dismissReactionSelector()
+    //check if need auto dismiss
+    if config.autoDissmissOnLetGo == true {
+         dismissReactionSelector()
+    }
   }
 
   // MARK: - Presenting Reaction Selectors

@@ -38,7 +38,7 @@ import UIKit
 public final class ReactionSelector: UIReactionControl {
   private var reactionIconLayers: [CALayer] = []
   private var reactionLabels: [UILabel]     = []
-  private let backgroundLayer               = Components.reactionSelect.backgroundLayer()
+  private var backgroundLayer               = Components.reactionSelect.backgroundLayer()
   private var _reactions: [Reaction]        = Reaction.facebook.all
 
   /**
@@ -78,7 +78,33 @@ public final class ReactionSelector: UIReactionControl {
   /**
    The reaction selector configuration.
    */
-  public var config = ReactionSelectorConfig()
+  public var config = ReactionSelectorConfig(){
+      didSet {
+          if let backgroundLayerConfig = config.backgroundLayerConfig {
+              //get default background config
+              let defaultBackground = Components.reactionSelect.backgroundLayer()
+              
+              //udpate it
+              if let fillColor = backgroundLayerConfig.fillColor {
+                  defaultBackground.fillColor = fillColor
+              }
+              if let strokeColor = backgroundLayerConfig.strokeColor {
+                  defaultBackground.strokeColor = strokeColor
+              }
+              if let shadowOffset = backgroundLayerConfig.shadowOffset {
+                  defaultBackground.shadowOffset = shadowOffset
+              }
+              if let shadowOpacity = backgroundLayerConfig.shadowOpacity {
+                  defaultBackground.shadowOpacity = shadowOpacity
+              }
+              
+              //assign new config
+              self.backgroundLayer = defaultBackground
+          }
+          
+          setupAndUpdate()
+      }
+  }
 
   // MARK: - Managing Internal State
 
@@ -124,7 +150,11 @@ public final class ReactionSelector: UIReactionControl {
     }
 
     reactionIconLayers.forEach { layer.addSublayer($0) }
-    reactionLabels.forEach { addSubview($0) }
+    
+    //add titlelable if showTitleLabel enable
+    if config.showTitleLabel {
+        reactionLabels.forEach { addSubview($0) }
+    }
   }
 
   // MARK: - Updating Object State

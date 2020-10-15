@@ -30,42 +30,48 @@ import UIKit
  The reaction button configuration object.
  */
 public final class ReactionButtonConfig: Configurable {
-  /**
-   The builder block.
-   The block gives a reference of receiver you can configure.
-   */
-  public typealias ConfigurableBlock = (ReactionButtonConfig) -> Void
-
-  /// The spacing between the icon and the text.
-  public var spacing: CGFloat     = 8
-
-  /// The marging between the icon and border.
-  public var iconMarging: CGFloat = 4
-
-  /// The font of the text.
-  public var font: UIFont! = UIFont(name: "HelveticaNeue", size: 16)
-
-  /// The color of the text (and image) when no reaction is selected.
-  public var neutralTintColor: UIColor = UIColor(red: 0.47, green: 0.47, blue: 0.47, alpha: 1)
-
-  /**
-   The technique to use for aligning the icon and the text.
-
-   The default value of this property is left.
-   */
-  public var alignment: ReactionAlignment = .left
-
-  // MARK: - Initializing a Reaction Button
-
-  // Initialize a configurable with default values.
-  init() {}
-
-  /**
-   Initialize a configurable with default values.
-
-   - Parameter block: A configurable block to configure itself.
-   */
-  public init(block: ConfigurableBlock) {
-    block(self)
-  }
+    /**
+     The builder block.
+     The block gives a reference of receiver you can configure.
+     */
+    public typealias ConfigurableBlock = (ReactionButtonConfig) -> Void
+    
+    /// The spacing between the icon and the text.
+    public var spacing: CGFloat     = 8
+    
+    /// The marging between the icon and border.
+    public var iconMarging: CGFloat = 4
+    
+    /// The font of the text.
+    public var font: UIFont! = UIFont(name: "HelveticaNeue", size: 16)
+    
+    /// The color of the text (and image) when no reaction is selected.
+    public var neutralTintColor: UIColor = UIColor(red: 0.47, green: 0.47, blue: 0.47, alpha: 1)
+    
+    ///Show show animation on selected
+    public var showAnimationOnSelected: Bool = true
+    
+    ///auto dimiss on let go outside
+    public var autoDissmissOnLetGo: Bool = true
+    
+    /**
+     The technique to use for aligning the icon and the text.
+     
+     The default value of this property is left.
+     */
+    public var alignment: ReactionAlignment = .left
+    
+    // MARK: - Initializing a Reaction Button
+    
+    // Initialize a configurable with default values.
+    init() {}
+    
+    /**
+     Initialize a configurable with default values.
+     
+     - Parameter block: A configurable block to configure itself.
+     */
+    public init(block: ConfigurableBlock) {
+        block(self)
+    }
 }

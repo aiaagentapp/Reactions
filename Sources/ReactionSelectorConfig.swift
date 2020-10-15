@@ -30,77 +30,89 @@ import UIKit
  The reaction selector configuration object.
  */
 public final class ReactionSelectorConfig: Configurable {
-  /**
-   The builder block.
-   The block gives a reference of receiver you can configure.
-   */
-  public typealias ConfigurableBlock = (ReactionSelectorConfig) -> Void
-
-  /// The spacing between the icons and borders.
-  public var spacing: CGFloat = 6
-
-  /// The icon size when the selector is inactive.
-  public var iconSize: CGFloat? = nil
-
-  /// Boolean value to know whether the reactions needs to be sticked when they are selected.
-  public var stickyReaction: Bool = false
-
-  // MARK: - Initializing a Reaction Selector
-
-  // Initialize a configurable with default values.
-  init() {}
-
-  /**
-   Initialize a configurable with default values.
-
-   - Parameter block: A configurable block to configure itself.
-   */
-  public init(block: ConfigurableBlock) {
-    block(self)
-  }
-
-  // MARK: - Convenient Methods
-
-  // The default icon size
-  let defaultIconSize: CGFloat = 40
-
-  /// Returns the icon size either in normal or highlighted mode
-  final func computedIconSize(highlighted isHighlighted: Bool) -> CGFloat {
-    let size = iconSize ?? defaultIconSize
-
-    return isHighlighted ? size - spacing : size
-  }
-
-  /// Returns the highlighted icon size
-  final func computedHighlightedIconSizeInBounds(_ bounds: CGRect, reactionCount: Int) -> CGFloat {
-    let iconSize = computedIconSize(highlighted: false)
-
-    return bounds.width - iconSize * CGFloat(reactionCount - 1)
-  }
-
-  /// Returns the icon frame
-  final func computedIconFrameAtIndex(_ index: Int, in bounds: CGRect, reactionCount: Int, highlightedIndex: Int?) -> CGRect {
-    let isHighlighted = highlightedIndex != nil
-    let fi            = CGFloat(index)
-    let topMargin     = isHighlighted ? spacing * 2 : spacing
-    let iconSize      = computedIconSize(highlighted: isHighlighted)
-
-    if let hi = highlightedIndex, index == hi {
-      let highlightedSize = computedHighlightedIconSizeInBounds(bounds, reactionCount: reactionCount)
-
-      return CGRect(x: (iconSize + spacing) * fi, y: bounds.height - highlightedSize - spacing, width: highlightedSize, height: highlightedSize)
+    /**
+     The builder block.
+     The block gives a reference of receiver you can configure.
+     */
+    public typealias ConfigurableBlock = (ReactionSelectorConfig) -> Void
+    
+    /// The spacing between the icons and borders.
+    public var spacing: CGFloat = 6
+    
+    /// The icon size when the selector is inactive.
+    public var iconSize: CGFloat? = nil
+    
+    /// Boolean value to know whether the reactions needs to be sticked when they are selected.
+    public var stickyReaction: Bool = false
+    
+    /// Show Title Label
+    public var showTitleLabel: Bool = true
+    
+    
+    public struct BackgroundLayerConfig {
+        let fillColor: CGColor?
+        let strokeColor: CGColor?
+        let shadowOffset: CGSize?
+        let shadowOpacity: Float?
     }
-    else if let hi = highlightedIndex, index > hi {
-      let highlightedSize = computedHighlightedIconSizeInBounds(bounds, reactionCount: reactionCount)
-
-      return CGRect(x: (iconSize + spacing) * (fi - 1) + highlightedSize, y: topMargin, width: iconSize, height: iconSize)
+    public var backgroundLayerConfig: BackgroundLayerConfig?
+    
+    // MARK: - Initializing a Reaction Selector
+    
+    // Initialize a configurable with default values.
+    init() {}
+    
+    /**
+     Initialize a configurable with default values.
+     
+     - Parameter block: A configurable block to configure itself.
+     */
+    public init(block: ConfigurableBlock) {
+        block(self)
     }
-
-    return CGRect(x: spacing + (iconSize + spacing) * fi, y: topMargin, width: iconSize, height: iconSize)
-  }
-
-  /// Returns the preferred bounds either in normal or highlighted mode
-  final func computedBounds(_ bounds: CGRect, highlighted: Bool) -> CGRect {
-    return highlighted ? CGRect(x: 0, y: spacing, width: bounds.width, height: bounds.height - spacing) : bounds
-  }
+    
+    // MARK: - Convenient Methods
+    
+    // The default icon size
+    let defaultIconSize: CGFloat = 40
+    
+    /// Returns the icon size either in normal or highlighted mode
+    final func computedIconSize(highlighted isHighlighted: Bool) -> CGFloat {
+        let size = iconSize ?? defaultIconSize
+        
+        return isHighlighted ? size - spacing : size
+    }
+    
+    /// Returns the highlighted icon size
+    final func computedHighlightedIconSizeInBounds(_ bounds: CGRect, reactionCount: Int) -> CGFloat {
+        let iconSize = computedIconSize(highlighted: false)
+        
+        return bounds.width - iconSize * CGFloat(reactionCount - 1)
+    }
+    
+    /// Returns the icon frame
+    final func computedIconFrameAtIndex(_ index: Int, in bounds: CGRect, reactionCount: Int, highlightedIndex: Int?) -> CGRect {
+        let isHighlighted = highlightedIndex != nil
+        let fi            = CGFloat(index)
+        let topMargin     = isHighlighted ? spacing * 2 : spacing
+        let iconSize      = computedIconSize(highlighted: isHighlighted)
+        
+        if let hi = highlightedIndex, index == hi {
+            let highlightedSize = computedHighlightedIconSizeInBounds(bounds, reactionCount: reactionCount)
+            
+            return CGRect(x: (iconSize + spacing) * fi, y: bounds.height - highlightedSize - spacing, width: highlightedSize, height: highlightedSize)
+        }
+        else if let hi = highlightedIndex, index > hi {
+            let highlightedSize = computedHighlightedIconSizeInBounds(bounds, reactionCount: reactionCount)
+            
+            return CGRect(x: (iconSize + spacing) * (fi - 1) + highlightedSize, y: topMargin, width: iconSize, height: iconSize)
+        }
+        
+        return CGRect(x: spacing + (iconSize + spacing) * fi, y: topMargin, width: iconSize, height: iconSize)
+    }
+    
+    /// Returns the preferred bounds either in normal or highlighted mode
+    final func computedBounds(_ bounds: CGRect, highlighted: Bool) -> CGRect {
+        return highlighted ? CGRect(x: 0, y: spacing, width: bounds.width, height: bounds.height - spacing) : bounds
+    }
 }
