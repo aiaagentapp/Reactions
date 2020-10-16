@@ -26,15 +26,6 @@
 
 import UIKit
 
-
-public struct BackgroundLayerConfig {
-    let fillColor: CGColor?
-    let strokeColor: CGColor?
-    let shadowOffset: CGSize?
-    let shadowOpacity: Float?
-}
-
-
 /**
  The reaction selector configuration object.
  */
@@ -57,8 +48,20 @@ public final class ReactionSelectorConfig: Configurable {
     /// Show Title Label
     public var showTitleLabel: Bool = true
     
-    
-    ///set custom background layer
+    ///update background layer
+    public struct BackgroundLayerConfig {
+        let fillColor: CGColor?
+        let strokeColor: CGColor?
+        let shadowOffset: CGSize?
+        let shadowOpacity: Float?
+        
+        public init(fillColor: CGColor?, strokeColor: CGColor?, shadowOffset: CGSize?, shadowOpacity: Float?) {
+            self.fillColor = fillColor
+            self.strokeColor = strokeColor
+            self.shadowOffset = shadowOffset
+            self.shadowOpacity = shadowOpacity
+        }
+    }
     public var backgroundLayerConfig: BackgroundLayerConfig?
     
     // MARK: - Initializing a Reaction Selector
