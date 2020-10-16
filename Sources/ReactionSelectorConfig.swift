@@ -64,6 +64,11 @@ public final class ReactionSelectorConfig: Configurable {
     }
     public var backgroundLayerConfig: BackgroundLayerConfig?
     
+    ///set default emoji on unselect
+    public var showDefaultReactionOnUnselect: Bool = false
+    public var defaultReactionIndex: Int = 0
+    
+    
     // MARK: - Initializing a Reaction Selector
     
     // Initialize a configurable with default values.

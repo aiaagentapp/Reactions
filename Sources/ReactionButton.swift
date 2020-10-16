@@ -155,6 +155,19 @@ public final class ReactionButton: UIReactionControl {
             })
             }, completion: nil)
         }
+    } else {
+        //change back to first emoji
+        //- get the reaction
+        if let reactions = reactionSelector?.reactions,
+            reactionSelector?.config.showDefaultReactionOnUnselect == true,
+            let defaultIndex = reactionSelector?.config.defaultReactionIndex,
+            reactions.count >= (defaultIndex + 1) {
+            let defaultReaction = reactions[defaultIndex]
+            
+            //- set as current reaction
+            reaction = defaultReaction
+            sendActions(for: .valueChanged)
+        }
     }
 
     sendActions(for: .touchUpInside)
