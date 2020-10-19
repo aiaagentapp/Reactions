@@ -28,64 +28,66 @@ import UIKit
 
 /**
  The `Reaction` struct defines several attributes like the title, the icon or the color of the reaction.
-
+ 
  A `Reaction` can be used with objects like `ReactionSelector`, `ReactionButton` and `ReactionSummary`.
  */
 public struct Reaction {
-  /// The reaction's identifier.
-  public let id: String
-
-  /// The reaction's title.
-  public let title: String
-
-  /// The reaction's color.
-  public let color: UIColor
-
-  /// The reaction's icon image.
-  public let icon: UIImage
-
-  /**
-   The reaction's alternative icon image.
-   
-   The alternative icon is only used by the `ReactionButton`. It tries to display the alternative as icon and if it fails it uses the `icon`.
-   */
-  public let alternativeIcon: UIImage?
-
-  /**
-   Creates and returns a new reaction using the specified properties.
-
-   - Parameter id: The reaction's identifier.
-   - Parameter title: The reaction's title.
-   - Parameter color: The reaction's color.
-   - Parameter icon: The reaction's icon image.
-   - Parameter alternativeIcon: The reaction's alternative icon image.
-   - Returns: Newly initialized reaction with the specified properties.
-   */
-  public init(id: String, title: String, color: UIColor, icon: UIImage, alternativeIcon: UIImage? = nil) {
-    self.id              = id
-    self.title           = title
-    self.color           = color
-    self.icon            = icon
-    self.alternativeIcon = alternativeIcon
-  }
+    /// The reaction's identifier.
+    public let id: String
+    
+    /// The reaction's title.
+    public let title: String
+    
+    /// The reaction's color.
+    public let color: UIColor
+    
+    /// The reaction's icon image.
+    public let icon: UIImage
+    
+    /**
+     The reaction's alternative icon image.
+     
+     The alternative icon is only used by the `ReactionButton`. It tries to display the alternative as icon and if it fails it uses the `icon`.
+     */
+    public let alternativeIcon: UIImage?
+    public let alternativeDisabledIcon: UIImage?
+    
+    /**
+     Creates and returns a new reaction using the specified properties.
+     
+     - Parameter id: The reaction's identifier.
+     - Parameter title: The reaction's title.
+     - Parameter color: The reaction's color.
+     - Parameter icon: The reaction's icon image.
+     - Parameter alternativeIcon: The reaction's alternative icon image.
+     - Returns: Newly initialized reaction with the specified properties.
+     */
+    public init(id: String, title: String, color: UIColor, icon: UIImage, alternativeIcon: UIImage? = nil, alternativeDisabledIcon: UIImage? = nil) {
+        self.id              = id
+        self.title           = title
+        self.color           = color
+        self.icon            = icon
+        self.alternativeIcon = alternativeIcon
+        self.alternativeDisabledIcon = alternativeDisabledIcon
+    }
 }
 
 extension Reaction: Equatable {
-  /// Returns a Boolean value indicating whether two values are equal.
-  public static func ==(lhs: Reaction, rhs: Reaction) -> Bool {
-    return lhs.id == rhs.id
-  }
+    /// Returns a Boolean value indicating whether two values are equal.
+    public static func ==(lhs: Reaction, rhs: Reaction) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
 
 extension Reaction: Hashable {
-  public func hash(into hasher: inout Hasher) {
-    hasher.combine(id)
-  }
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }
 
 extension Reaction: CustomStringConvertible {
-  /// A textual representation of this instance.
-  public var description: String {
-    return "<Reaction id=\(id) title=\(title)>"
-  }
+    /// A textual representation of this instance.
+    public var description: String {
+        return "<Reaction id=\(id) title=\(title)>"
+    }
 }

@@ -104,7 +104,7 @@ public final class ReactionButton: UIReactionControl {
   // MARK: - Updating Object State
 
   override func update() {
-    iconImageView.image = reaction.alternativeIcon ?? reaction.icon
+    iconImageView.image = (isSelected ? reaction.alternativeIcon : reaction.alternativeDisabledIcon) ?? (reaction.alternativeIcon ?? reaction.icon)
     titleLabel.font     = config.font
     titleLabel.text     = reaction.title
 
