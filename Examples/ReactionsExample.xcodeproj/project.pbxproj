@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		285A5F41253EC6F3005772B9 /* ReactionButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285A5F40253EC6F3005772B9 /* ReactionButtonDelegate.swift */; };
+		285A5F42253EC6F3005772B9 /* ReactionButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285A5F40253EC6F3005772B9 /* ReactionButtonDelegate.swift */; };
+		285A5F43253EC6F3005772B9 /* ReactionButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285A5F40253EC6F3005772B9 /* ReactionButtonDelegate.swift */; };
 		CE0385EA1DAA51FC00D7F482 /* UIReactionControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0385E91DAA51FC00D7F482 /* UIReactionControlTests.swift */; };
 		CE0385F11DAA560F00D7F482 /* UIReactionControlTest.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE0385F01DAA560F00D7F482 /* UIReactionControlTest.xib */; };
 		CE0385F51DAA87C100D7F482 /* ComponentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE874F021DA2DA64000D309E /* ComponentBuilder.swift */; };
@@ -125,6 +128,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		285A5F40253EC6F3005772B9 /* ReactionButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionButtonDelegate.swift; sourceTree = "<group>"; };
 		CE0385E91DAA51FC00D7F482 /* UIReactionControlTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIReactionControlTests.swift; sourceTree = "<group>"; };
 		CE0385F01DAA560F00D7F482 /* UIReactionControlTest.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIReactionControlTest.xib; sourceTree = "<group>"; };
 		CE0386071DAA8C7B00D7F482 /* ReactionFeedbackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionFeedbackTests.swift; sourceTree = "<group>"; };
@@ -292,6 +296,7 @@
 				CED4FCF61DA014B100F54838 /* Reaction.swift */,
 				CED9D9411DA6931A00A70C2D /* ReactionAlignment.swift */,
 				CED4FCF81DA10D6600F54838 /* ReactionButton.swift */,
+				285A5F40253EC6F3005772B9 /* ReactionButtonDelegate.swift */,
 				CED9D9491DA78F9400A70C2D /* ReactionButtonConfig.swift */,
 				CED4FCFC1DA1100900F54838 /* ReactionFeedback.swift */,
 				CED9D9471DA6EAFA00A70C2D /* ReactionFeedbackDelegate.swift */,
@@ -498,6 +503,7 @@
 				CE83F89A1DA8F05A000943AB /* ComponentBuilder.swift in Sources */,
 				CE83F8A01DA8F05A000943AB /* ReactionAlignment.swift in Sources */,
 				CE83F8A51DA8F05A000943AB /* ReactionSelector.swift in Sources */,
+				285A5F42253EC6F3005772B9 /* ReactionButtonDelegate.swift in Sources */,
 				CE83F89E1DA8F05A000943AB /* FacebookReactions.swift in Sources */,
 				CE83F89B1DA8F05A000943AB /* Components.swift in Sources */,
 				CE83F89F1DA8F05A000943AB /* Reaction.swift in Sources */,
@@ -516,6 +522,7 @@
 				CE03860A1DAAA58D00D7F482 /* ReactionSelectorTests.swift in Sources */,
 				CE0386011DAA87C100D7F482 /* ReactionSelectorConfig.swift in Sources */,
 				CE0386021DAA87C100D7F482 /* ReactionSummary.swift in Sources */,
+				285A5F43253EC6F3005772B9 /* ReactionButtonDelegate.swift in Sources */,
 				CE0385EA1DAA51FC00D7F482 /* UIReactionControlTests.swift in Sources */,
 				CE0386001DAA87C100D7F482 /* ReactionSelector.swift in Sources */,
 				CE0386031DAA87C100D7F482 /* ReactionSummaryConfig.swift in Sources */,
@@ -545,6 +552,7 @@
 				CED9D9481DA6EAFA00A70C2D /* ReactionFeedbackDelegate.swift in Sources */,
 				CED9D93E1DA6566700A70C2D /* FacebookReactions.swift in Sources */,
 				CE874F011DA2D916000D309E /* ReactionSummary.swift in Sources */,
+				285A5F41253EC6F3005772B9 /* ReactionButtonDelegate.swift in Sources */,
 				CED4FCF91DA10D6600F54838 /* ReactionButton.swift in Sources */,
 				CEB867BC1DA41CB600031B0D /* UIReactionControl.swift in Sources */,
 				CED9D94E1DA7E49500A70C2D /* Configurable.swift in Sources */,
