@@ -10,5 +10,6 @@ import Foundation
 
 
 public protocol ReactionButtonDelegate: class {
+    func onShowHideReactionSelector(showing: Bool)
     func onSelectedReactionChanged(selectedReaction: Reaction?)
 }

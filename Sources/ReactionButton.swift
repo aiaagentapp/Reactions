@@ -256,6 +256,9 @@ public final class ReactionButton: UIReactionControl {
         reactionSelector?.feedback = nil
         
         animateOverlay(alpha: 0, center: CGPoint(x: overlay.bounds.midX, y: overlay.bounds.midY))
+        
+        //inform delegate
+        delegate?.onShowHideReactionSelector(showing: false)
     }
     
     private func displayReactionSelector(feedback: ReactionFeedback) {
@@ -289,6 +292,9 @@ public final class ReactionButton: UIReactionControl {
         selector.feedback = feedback
         
         animateOverlay(alpha: 1, center: CGPoint(x: overlay.bounds.midX, y: overlay.bounds.midY - selector.bounds.height))
+        
+        //inform delegate
+        delegate?.onShowHideReactionSelector(showing: true)
     }
     
     private func animateOverlay(alpha: CGFloat, center: CGPoint) {
