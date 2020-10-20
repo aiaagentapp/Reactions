@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Reactions'
-  s.version          = '3.0.10'
+  s.version          = '3.0.11'
   s.license          = 'MIT'
   s.summary          = 'Fully customizable Facebook reactions control'
   s.homepage         = 'https://github.com/aiaagentapp/Reactions'

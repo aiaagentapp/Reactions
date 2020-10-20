@@ -48,6 +48,11 @@ public final class ReactionSelectorConfig: Configurable {
     /// Show Title Label
     public var showTitleLabel: Bool = true
     
+    /// Shrink Background Focus
+    public var shrinkBackgroundOnFocus: Bool = true
+    
+    
+    
     ///update background layer
     public struct BackgroundLayerConfig {
         let fillColor: CGColor?

@@ -161,8 +161,16 @@ public final class ReactionSelector: UIReactionControl {
     // MARK: - Updating Object State
     
     override func update() {
-        let backgroundBounds = config.computedBounds(bounds, highlighted: stateHighlightedReactionIndex != nil)
-        let backgroundPath   = UIBezierPath(roundedRect: backgroundBounds, cornerRadius: backgroundBounds.height / 2).cgPath
+        
+        let backgroundBounds: CGRect
+        let backgroundPath: CGPath
+        if config.shrinkBackgroundOnFocus {
+            backgroundBounds = config.computedBounds(bounds, highlighted: stateHighlightedReactionIndex != nil)
+            backgroundPath   = UIBezierPath(roundedRect: backgroundBounds, cornerRadius: backgroundBounds.height / 2).cgPath
+        } else {
+            backgroundBounds = bounds
+            backgroundPath   = UIBezierPath(roundedRect: backgroundBounds, cornerRadius: backgroundBounds.height / 2).cgPath
+        }
         
         CATransaction.begin()
         CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut))
@@ -175,7 +183,7 @@ public final class ReactionSelector: UIReactionControl {
             $0.fillMode              = CAMediaTimingFillMode.both
             $0.isRemovedOnCompletion = false
         }
-        
+
         backgroundLayer.add(pathAnimation, forKey: "morhingPath")
         
         for index in 0 ..< reactionIconLayers.count {
